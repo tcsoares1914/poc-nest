@@ -1,0 +1,21 @@
+version: '3.8'
+
+networks:
+  poc:
+    driver: bridge
+
+services:
+  api:
+    networks:
+      - poc
+    container_name: poc-nest
+    build:
+      context: .
+    image: poc-nest
+    env_file:
+      - .env
+    volumes:
+      - ./:/code
+      - ./node_modules:/code/node_modules
+    ports:
+      - ${APPLICATION_PORT}:${DOCKER_PORT}
