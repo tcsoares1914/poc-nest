@@ -13,5 +13,5 @@ pre-push:
   commands:
     test:
       run: jest --passWithNoTests --verbose --testTimeout=30000
-    test-e2e:
-      run: jest --config ./test/jest-e2e.json --passWithNoTests --verbose --testTimeout=30000
+    # test-e2e:
+    #   run: jest --config ./test/jest-e2e.json --passWithNoTests --verbose --testTimeout=30000
