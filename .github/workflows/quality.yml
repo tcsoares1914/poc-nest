@@ -45,8 +45,8 @@ jobs:
         uses: mattallty/jest-github-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run E2E Tests
-        run: yarn run test:e2e
+      # - name: Run E2E Tests
+      #   run: yarn run test:e2e
       - name: Uninstall Yarn
         if: always()
         run: npm uninstall -g yarn
