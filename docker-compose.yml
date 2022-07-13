@@ -18,4 +18,4 @@ services:
       - ./:/code
       - ./node_modules:/code/node_modules
     ports:
-      - ${APPLICATION_PORT}:${DOCKER_PORT}
+      - ${EXPOSED_PORT:-4000}:${PORT:-3000}

@@ -1,0 +1,17 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: '*.ts'
+      run: prettier --write {staged_files}
+    lint:
+      glob: '*.ts'
+      run: eslint {staged_files} --fix
+
+pre-push:
+  parallel: true
+  commands:
+    test:
+      run: jest --passWithNoTests --verbose --testTimeout=30000
+    # test-e2e:
+    #   run: jest --config ./test/jest-e2e.json --passWithNoTests --verbose --testTimeout=30000
