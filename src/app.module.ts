@@ -4,8 +4,9 @@ import apiConfig from '@src/config/api.config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { HealthCheckModule } from '@src/health-check/health-check.module';
 import { UsersModule } from '@src/users/users.module';
+import { AuthModule } from '@src/auth/auth.module';
 
-const importedModules = [HealthCheckModule, UsersModule];
+const importedModules = [HealthCheckModule, UsersModule, AuthModule];
 
 @Module({
   imports: [

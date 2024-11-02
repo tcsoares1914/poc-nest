@@ -1,11 +1,10 @@
 import {
-  BadRequestException,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, Types } from 'mongoose';
+import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from '@src/users/dto/create-user.dto';
 import { UpdateUserDto } from '@src/users/dto/update-user.dto';
@@ -48,13 +47,6 @@ export class UsersService {
    * List one collection item.
    */
   async findOne(id: string): Promise<User> {
-    const checkId = this.checkObjectId(id);
-
-    if (!checkId) {
-      console.log('falhou');
-      // throw new BadRequestException('ObjectId is not valid!');
-    }
-
     const user = await this.userModel.findById(id);
 
     if (!user) {
@@ -111,13 +103,5 @@ export class UsersService {
   protected async hashPassword(password: string): Promise<string> {
     const saltOrRounds = 10;
     return await bcrypt.hash(password, saltOrRounds);
-  }
-
-  /**
-   * Check if MongoDB id is valid
-   */
-  protected async checkObjectId(id: string): Promise<boolean> {
-    const ObjectId = Types.ObjectId;
-    return ObjectId.isValid(id);
   }
 }
