@@ -8,7 +8,7 @@ jobs:
       matrix:
         node_version: [22]
     steps:
-      - name: Checkout Github repo
+      - name: Checkout Github repository.
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -16,11 +16,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
-      - name: Install dependencies
+      - name: Install Node.js dependencies.
         run: npm ci
-      - name: Run tests
+      - name: Format code file(s).
+        run: npm run format
+      - name: Check ESLint into file(s).
+        run: npm run lint
+      - name: Compile TypeScript file(s).
         run: npm run build --if-present
-      - name: Run unit tests
+      - name: Run Unit test(s)
         run: npm run test
 
 
