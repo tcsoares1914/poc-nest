@@ -2,17 +2,12 @@
 
 REST API using NestJS and MongoDB.
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
 - Content:
     - [Stack](#stack)
     - [Installation](#installation)
     - [Running](#running)
     - [Tests](#tests)
 
-<!-- /TOC -->
-
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 ## Stack <a name="stack"></a>
 - Stack:
   - [Node.js](https://nodejs.org/)
@@ -66,7 +61,7 @@ $ docker compose up -d
 Check if API is healthy, make a GET request for /:
 
 ```bash
-GET: http://localhost:3000/health/
+GET: http://localhost:3000/
 ```
 
 If API is OK:
