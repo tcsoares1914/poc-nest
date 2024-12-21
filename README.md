@@ -4,7 +4,7 @@ REST API using NestJS and MongoDB.
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- Conteúdo:
+- Content:
     - [Stack](#stack)
     - [Installation](#installation)
     - [Running](#running)
@@ -14,7 +14,7 @@ REST API using NestJS and MongoDB.
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 ## Stack <a name="stack"></a>
-- Stack utilizada na aplicação:
+- Stack:
   - [Node.js](https://nodejs.org/)
   - [NestJS](https://nestjs.com/)
   - [TypeScript](https://www.typescriptlang.org/)
@@ -26,22 +26,23 @@ REST API using NestJS and MongoDB.
 
 ## Installation <a name="installation"></a>
 
-Clone o repositório GIT.
+Clone GIT repository.
 
 ```bash
 # Using SSL method.
-$ git clone git@github.com:tcsoares1914/test-taking-api.git
+$ git clone git@github.com:tcsoares1914/poc-nest.git
 ```
 
-Acesse o diretório do repositório clonado:
+Access workdir of application:
 
 ```bash
-$ cd test-taking-api/
+$ cd poc-nest/
 ```
 
-Faça uma cópia do arquivo .env.example ou renomeie para .env.
+Make a copy of .env.example for .env. 
 
 ```bash
+# Copy file.
 $ cp .env.example .env
 ```
 
@@ -62,13 +63,13 @@ For create and run containers.
 $ docker compose up -d
 ```
 
-Check if everything it works, make a GET request for /:
+Check if API is healthy, make a GET request for /:
 
 ```bash
 GET: http://localhost:3000/health/
 ```
 
-If API is healthy:
+If API is OK:
 
 ```bash
 {
@@ -88,7 +89,7 @@ $ npm run test
 ```
 
 
-For generate unit tests code coverage:
+For generate code coverage for unit tests:
 
 ```bash
 # Running unit tests and generate code coverage.
