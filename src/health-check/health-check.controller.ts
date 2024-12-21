@@ -12,7 +12,7 @@ export class HealthCheckController {
    * Return API status.
    */
   @Get()
-  get() {
-    return this.healthCheckService.get();
+  check() {
+    return this.healthCheckService.check();
   }
 }

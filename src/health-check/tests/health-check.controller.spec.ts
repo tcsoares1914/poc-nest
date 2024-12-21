@@ -24,7 +24,7 @@ describe('HealthCheckController', () => {
       name: 'API',
       version: process.env.npm_package_version,
     };
-    expect(controller.get()).toBeDefined();
-    expect(controller.get()).toMatchObject(expected);
+    expect(controller.check()).toBeDefined();
+    expect(controller.check()).toMatchObject(expected);
   });
 });
