@@ -5,7 +5,7 @@ export class HealthCheckService {
   /**
    * Return API status.
    */
-  get() {
+  check() {
     return {
       healthy: true,
       name: 'API',

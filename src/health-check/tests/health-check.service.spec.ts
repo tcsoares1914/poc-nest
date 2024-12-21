@@ -22,7 +22,7 @@ describe('HealthCheckService', () => {
       name: 'API',
       version: process.env.npm_package_version,
     };
-    expect(service.get()).toBeDefined();
-    expect(service.get()).toMatchObject(expected);
+    expect(service.check()).toBeDefined();
+    expect(service.check()).toMatchObject(expected);
   });
 });
