@@ -5,8 +5,14 @@ import { UpdateCertificationInput } from '@src/certifications/dto/update-certifi
 
 @Resolver('Certification')
 export class CertificationsResolver {
+  /**
+   * Inject service dependency.
+   */
   constructor(private readonly certificationsService: CertificationsService) {}
 
+  /**
+   * Create a new certification.
+   */
   @Mutation('createCertification')
   create(
     @Args('createCertificationInput')
@@ -15,16 +21,25 @@ export class CertificationsResolver {
     return this.certificationsService.create(createCertificationInput);
   }
 
+  /**
+   * Find all certifications.
+   */
   @Query('certifications')
   findAll() {
     return this.certificationsService.findAll();
   }
 
+  /**
+   * Find a certification by ID.
+   */
   @Query('certification')
   findOne(@Args('id') id: string) {
     return this.certificationsService.findOne(id);
   }
 
+  /**
+   * Update a certification by ID.
+   */
   @Mutation('updateCertification')
   update(
     @Args('id') id: string,
@@ -34,8 +49,11 @@ export class CertificationsResolver {
     return this.certificationsService.update(id, updateCertificationInput);
   }
 
+  /**
+   * Remove a certification by ID.
+   */
   @Mutation('removeCertification')
-  remove(@Args('id') id: number) {
+  remove(@Args('id') id: string) {
     return this.certificationsService.remove(id);
   }
 }

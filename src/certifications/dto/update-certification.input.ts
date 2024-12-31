@@ -5,29 +5,31 @@ import { CreateCertificationInput } from '@src/certifications/dto/create-certifi
 export class UpdateCertificationInput extends PartialType(
   CreateCertificationInput,
 ) {
-  readonly id: string;
+  @IsOptional()
+  @IsString()
+  readonly id?: string;
 
   @IsOptional()
   @IsString()
-  code: string;
+  code?: string;
 
   @IsOptional()
   @IsString()
-  name: string;
+  name?: string;
 
   @IsOptional()
   @IsString()
-  description: string;
+  description?: string;
 
   @IsOptional()
   @IsString()
-  status: string;
+  badgeUrl?: string;
 
   @IsOptional()
   @IsString()
-  verificationUrl: string;
+  certificationUrl?: string;
 
   @IsOptional()
   @IsString()
-  badgeUrl: string;
+  verificationUrl?: string;
 }

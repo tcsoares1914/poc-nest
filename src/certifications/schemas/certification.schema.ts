@@ -24,23 +24,23 @@ export class Certification {
 
   @Prop({ required: true })
   @Field()
-  status: string;
+  badgeUrl: string;
 
-  @Prop({ required: false })
+  @Prop({ required: true })
   @Field()
   certificationUrl: string;
 
   @Prop({ required: false })
   @Field()
-  badgeUrl: string;
+  verificationUrl: string;
 
   constructor(certification?: Partial<Certification>) {
     this.code = certification?.code;
     this.name = certification?.name;
     this.description = certification?.description;
-    this.status = certification?.status;
-    this.certificationUrl = certification?.certificationUrl;
     this.badgeUrl = certification?.badgeUrl;
+    this.certificationUrl = certification?.certificationUrl;
+    this.verificationUrl = certification?.verificationUrl;
   }
 }
 

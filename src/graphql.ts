@@ -17,18 +17,18 @@ export class CreateCertificationInput {
     code: string;
     name: string;
     description?: Nullable<string>;
-    status: CertificationStatus;
-    verificationUrl?: Nullable<string>;
     badgeUrl?: Nullable<string>;
+    certificationUrl?: Nullable<string>;
+    verificationUrl?: Nullable<string>;
 }
 
 export class UpdateCertificationInput {
     code?: Nullable<string>;
     name?: Nullable<string>;
     description?: Nullable<string>;
-    status?: Nullable<CertificationStatus>;
-    verificationUrl?: Nullable<string>;
     badgeUrl?: Nullable<string>;
+    certificationUrl?: Nullable<string>;
+    verificationUrl?: Nullable<string>;
 }
 
 export class Certification {
@@ -36,9 +36,9 @@ export class Certification {
     code: string;
     name: string;
     description?: Nullable<string>;
-    status: CertificationStatus;
-    verificationUrl?: Nullable<string>;
     badgeUrl?: Nullable<string>;
+    certificationUrl?: Nullable<string>;
+    verificationUrl?: Nullable<string>;
 }
 
 export abstract class IQuery {

@@ -15,13 +15,13 @@ export class CreateCertificationInput {
 
   @IsNotEmpty()
   @IsString()
-  status: string;
+  badgeUrl: string;
+
+  @IsNotEmpty()
+  @IsString()
+  certificationUrl: string;
 
   @IsNotEmpty()
   @IsString()
   verificationUrl: string;
-
-  @IsNotEmpty()
-  @IsString()
-  badgeUrl: string;
 }

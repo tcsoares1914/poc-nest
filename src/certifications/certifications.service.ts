@@ -1,10 +1,11 @@
 import {
+  BadRequestException,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, isValidObjectId } from 'mongoose';
 import { CreateCertificationInput } from '@src/certifications/dto/create-certification.input';
 import { UpdateCertificationInput } from '@src/certifications/dto/update-certification.input';
 import { Certification } from '@src/certifications/schemas/certification.schema';
@@ -50,6 +51,9 @@ export class CertificationsService {
    * Find a certification by ID.
    */
   async findOne(id: string): Promise<Certification> {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException('ID must be a ObjectId!');
+    }
     const certification = await this.certificationModel.findById(id);
 
     if (!certification) {
@@ -66,6 +70,9 @@ export class CertificationsService {
     id: string,
     updateCertificationInput: UpdateCertificationInput,
   ): Promise<Certification> {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException('ID must be a ObjectId!');
+    }
     const certification = await this.certificationModel.findByIdAndUpdate(
       id,
       updateCertificationInput,
@@ -81,7 +88,10 @@ export class CertificationsService {
   /**
    * Remove a certification by ID.
    */
-  async remove(id: number): Promise<Certification> {
+  async remove(id: string): Promise<Certification> {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException('ID must be a ObjectId!');
+    }
     const certification = this.certificationModel.findByIdAndDelete(id);
 
     if (!certification) {

@@ -12,12 +12,13 @@ type Certification {
   name: String!
   # Certification description.
   description: String
-  # Certification passing status.
-  status: CertificationStatus!
-  # Certification verification URL.
-  verificationUrl: String
   # Certification badge URL.
   badgeUrl: String
+  # Certification URL.
+  certificationUrl: String
+  # Certification verification URL.
+  verificationUrl: String
+
 }
 
 input CreateCertificationInput {
@@ -27,12 +28,12 @@ input CreateCertificationInput {
   name: String!
   # Certification description.
   description: String
-  # Certification passing status.
-  status: CertificationStatus!
-  # Certification verification URL.
-  verificationUrl: String
   # Certification badge URL.
   badgeUrl: String
+  # Certification URL.
+  certificationUrl: String
+  # Certification verification URL.
+  verificationUrl: String
 }
 
 input UpdateCertificationInput {
@@ -42,12 +43,12 @@ input UpdateCertificationInput {
   name: String
   # Certification description.
   description: String
-  # Certification passing status.
-  status: CertificationStatus
-  # Certification verification URL.
-  verificationUrl: String
   # Certification badge URL.
   badgeUrl: String
+  # Certification URL.
+  certificationUrl: String
+  # Certification verification URL.
+  verificationUrl: String
 }
 
 type Query {
