@@ -1,0 +1,68 @@
+enum CertificationStatus {
+  PENDING
+  PASSED
+}
+
+type Certification {
+  # Certification ID.
+  id: ID!
+  # Certification code.
+  code: String!
+  # Certification name.
+  name: String!
+  # Certification description.
+  description: String
+  # Certification badge URL.
+  badgeUrl: String
+  # Certification URL.
+  certificationUrl: String
+  # Certification verification URL.
+  verificationUrl: String
+
+}
+
+input CreateCertificationInput {
+  # Certification code.
+  code: String!
+  # Certification name.
+  name: String!
+  # Certification description.
+  description: String
+  # Certification badge URL.
+  badgeUrl: String
+  # Certification URL.
+  certificationUrl: String
+  # Certification verification URL.
+  verificationUrl: String
+}
+
+input UpdateCertificationInput {
+  # Certification code.
+  code: String
+  # Certification name.
+  name: String
+  # Certification description.
+  description: String
+  # Certification badge URL.
+  badgeUrl: String
+  # Certification URL.
+  certificationUrl: String
+  # Certification verification URL.
+  verificationUrl: String
+}
+
+type Query {
+  # List all certifications.
+  certifications: [Certification]!
+  # List a certification by ID.
+  certification(id: String!): Certification
+}
+
+type Mutation {
+  # Create a new certification.
+  createCertification(createCertificationInput: CreateCertificationInput!): Certification!
+  # Update a certification by ID.
+  updateCertification(id: String!, updateCertificationInput: UpdateCertificationInput!): Certification!
+  # Remove a certification by ID.
+  removeCertification(id: String!): Certification
+}

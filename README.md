@@ -1,6 +1,6 @@
-## REST API
+## GRAPHQL API
 
-REST API using NestJS and MongoDB.
+GraphQL API using NestJS and MongoDB.
 
 - Content:
     - [Stack](#stack)
@@ -9,7 +9,9 @@ REST API using NestJS and MongoDB.
     - [Tests](#tests)
 
 ## Stack <a name="stack"></a>
+
 - Stack:
+  - [GraphQL](https://graphql.org/)
   - [Node.js](https://nodejs.org/)
   - [NestJS](https://nestjs.com/)
   - [TypeScript](https://www.typescriptlang.org/)
@@ -17,21 +19,19 @@ REST API using NestJS and MongoDB.
   - [Mongoose](https://mongoosejs.com/)
   - [Jest](https://jestjs.io/)
 
-<!-- /TOC -->
-
 ## Installation <a name="installation"></a>
 
 Clone GIT repository.
 
 ```bash
 # Using SSL method.
-$ git clone git@github.com:tcsoares1914/poc-nest.git
+$ git clone git@github.com:tcsoares1914/poc-nest-graphql.git
 ```
 
 Access workdir of application:
 
 ```bash
-$ cd poc-nest/
+$ cd poc-nest-graphql/
 ```
 
 Make a copy of .env.example for .env. 
