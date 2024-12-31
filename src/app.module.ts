@@ -5,9 +5,10 @@ import { GraphQLModule } from '@nestjs/graphql';
 import graphqlConfig from '@src/config/graphql.config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { HealthCheckModule } from '@src/health-check/health-check.module';
+import { UsersModule } from '@src/users/users.module';
 import { CertificationsModule } from '@src/certifications/certifications.module';
 
-const importedModules = [HealthCheckModule, CertificationsModule];
+const importedModules = [HealthCheckModule, UsersModule, CertificationsModule];
 @Module({
   imports: [
     ConfigModule.forRoot({

@@ -15,15 +15,15 @@ export class CertificationTestMocks {
   }
 
   public static getValidCertificationDto(): CreateCertificationInput {
-    const product = new CreateCertificationInput();
-    product.code = 'AZ-900';
-    product.name = 'Azure Fundamentals';
-    product.description = 'Azure Fundamentals Certification description.';
-    product.badgeUrl = 'https://domain.com/assets/badge.png';
-    product.certificationUrl = 'https://domain.com/certification/az-900';
-    product.verificationUrl = 'https://domain.com/verify/az-900';
+    const certification = new CreateCertificationInput();
+    certification.code = 'AZ-900';
+    certification.name = 'Azure Fundamentals';
+    certification.description = 'Azure Fundamentals Certification description.';
+    certification.badgeUrl = 'https://domain.com/assets/badge.png';
+    certification.certificationUrl = 'https://domain.com/certification/az-900';
+    certification.verificationUrl = 'https://domain.com/verify/az-900';
 
-    return product;
+    return certification;
   }
 
   public static getCertifications(): Certification[] {
