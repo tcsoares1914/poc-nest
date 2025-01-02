@@ -5,6 +5,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import * as bcrypt from 'bcrypt';
 import { Model, isValidObjectId } from 'mongoose';
 import { CreateUserInput } from '@src/users/dto/create-user.input';
 import { UpdateUserInput } from '@src/users/dto/update-user.input';
@@ -14,6 +15,8 @@ import { User } from '@src/users/schemas/user.schema';
 export class UsersService {
   /**
    * Inject repository dependency.
+   *
+   * @param {Model<User>} userModel The user model.
    */
   constructor(
     @InjectModel(User.name)
@@ -22,8 +25,13 @@ export class UsersService {
 
   /**
    * Create a new user.
+   *
+   * @public
+   * @param {CreateUserInput} createUserInput input user data.
+   * @returns {Promise<User>} The created user.
    */
-  async create(createUserInput: CreateUserInput): Promise<User> {
+  public async create(createUserInput: CreateUserInput): Promise<User> {
+    createUserInput.password = await bcrypt.hash(createUserInput.password, 10);
     const user = new this.userModel(createUserInput);
     const newUser = await user.save();
 
@@ -38,8 +46,11 @@ export class UsersService {
 
   /**
    * Find all users.
+   *
+   * @public
+   * @returns {Promise<User[]>} All users list.
    */
-  async findAll(): Promise<User[]> {
+  public async findAll(): Promise<User[]> {
     const users = await this.userModel.find();
 
     return users;
@@ -47,8 +58,12 @@ export class UsersService {
 
   /**
    * Find a user by ID.
+   *
+   * @public
+   * @param {string} id user ID.
+   * @returns {Promise<User>} The user found.
    */
-  async findOne(id: string): Promise<User> {
+  public async findOne(id: string): Promise<User> {
     if (!isValidObjectId(id)) {
       throw new BadRequestException('ID must be a ObjectId!');
     }
@@ -63,10 +78,23 @@ export class UsersService {
 
   /**
    * Update a user by ID.
+   *
+   * @public
+   * @param {string} id user ID.
+   * @param {UpdateUserInput} updateUserInput input user data.
+   * @returns {Promise<User>} The updated user.
    */
-  async update(id: string, updateUserInput: UpdateUserInput): Promise<User> {
+  public async update(
+    id: string,
+    updateUserInput: UpdateUserInput,
+  ): Promise<User> {
     if (!isValidObjectId(id)) {
       throw new BadRequestException('ID must be a ObjectId!');
+    }
+    if (updateUserInput.password.length > 0) {
+      updateUserInput.password = await this.hashPassword(
+        updateUserInput.password,
+      );
     }
     const user = await this.userModel.findByIdAndUpdate(id, updateUserInput);
 
@@ -79,8 +107,12 @@ export class UsersService {
 
   /**
    * Remove a user by ID.
+   *
+   * @public
+   * @param {string} id user ID.
+   * @returns {Promise<User>} The removed user.
    */
-  async remove(id: string): Promise<User> {
+  public async remove(id: string): Promise<User> {
     if (!isValidObjectId(id)) {
       throw new BadRequestException('ID must be a ObjectId!');
     }
@@ -91,5 +123,17 @@ export class UsersService {
     }
 
     return user;
+  }
+
+  /**
+   * Encrypt password
+   *
+   * @protected
+   * @param {string} password The password to be encrypted.
+   * @returns {Promise<string>} The encrypted password.
+   */
+  protected async hashPassword(password: string): Promise<string> {
+    const saltOrRounds = 10;
+    return await bcrypt.hash(password, saltOrRounds);
   }
 }

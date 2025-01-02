@@ -14,7 +14,7 @@ export class UsersResolver {
    * Create a new user.
    */
   @Mutation('createUser')
-  create(
+  public create(
     @Args('createUserInput')
     createUserInput: CreateUserInput,
   ) {
@@ -25,7 +25,7 @@ export class UsersResolver {
    * Find all users.
    */
   @Query('users')
-  findAll() {
+  public findAll() {
     return this.usersService.findAll();
   }
 
@@ -33,7 +33,7 @@ export class UsersResolver {
    * Find a user by ID.
    */
   @Query('user')
-  findOne(@Args('id') id: string) {
+  public findOne(@Args('id') id: string) {
     return this.usersService.findOne(id);
   }
 
@@ -41,7 +41,7 @@ export class UsersResolver {
    * Update a user by ID.
    */
   @Mutation('updateUser')
-  update(
+  public update(
     @Args('id') id: string,
     @Args('updateUserInput')
     updateUserInput: UpdateUserInput,
@@ -53,7 +53,7 @@ export class UsersResolver {
    * Remove a user by ID.
    */
   @Mutation('removeUser')
-  remove(@Args('id') id: string) {
+  public remove(@Args('id') id: string) {
     return this.usersService.remove(id);
   }
 }

@@ -14,6 +14,8 @@ import { Certification } from '@src/certifications/schemas/certification.schema'
 export class CertificationsService {
   /**
    * Inject repository dependency.
+   *
+   * @param {Model<Certification>} certificationModel The certification model.
    */
   constructor(
     @InjectModel(Certification.name)
@@ -22,8 +24,12 @@ export class CertificationsService {
 
   /**
    * Create a new certification.
+   *
+   * @public
+   * @param {createCertificationInput} createCertificationInput input certification data.
+   * @returns {Promise<Certification>} The created certification.
    */
-  async create(
+  public async create(
     createCertificationInput: CreateCertificationInput,
   ): Promise<Certification> {
     const user = new this.certificationModel(createCertificationInput);
@@ -40,8 +46,11 @@ export class CertificationsService {
 
   /**
    * Find all certifications.
+   *
+   * @public
+   * @returns {Promise<Certification[]>} All certifications list.
    */
-  async findAll(): Promise<Certification[]> {
+  public async findAll(): Promise<Certification[]> {
     const certifications = await this.certificationModel.find();
 
     return certifications;
@@ -49,8 +58,12 @@ export class CertificationsService {
 
   /**
    * Find a certification by ID.
+   *
+   * @public
+   * @param {string} id Certification ID.
+   * @returns {Promise<Certification>} The found certification.
    */
-  async findOne(id: string): Promise<Certification> {
+  public async findOne(id: string): Promise<Certification> {
     if (!isValidObjectId(id)) {
       throw new BadRequestException('ID must be a ObjectId!');
     }
@@ -65,8 +78,13 @@ export class CertificationsService {
 
   /**
    * Update a certification by ID.
+   *
+   * @public
+   * @param {string} id Certification ID.
+   * @param {updateCertificationInput} updateCertificationInput input certification data.
+   * @returns {Promise<Certification>} The updated certification.
    */
-  async update(
+  public async update(
     id: string,
     updateCertificationInput: UpdateCertificationInput,
   ): Promise<Certification> {
@@ -87,8 +105,12 @@ export class CertificationsService {
 
   /**
    * Remove a certification by ID.
+   *
+   * @public
+   * @param {string} id Certification ID.
+   * @returns {Promise<Certification>} The removed certification.
    */
-  async remove(id: string): Promise<Certification> {
+  public async remove(id: string): Promise<Certification> {
     if (!isValidObjectId(id)) {
       throw new BadRequestException('ID must be a ObjectId!');
     }
