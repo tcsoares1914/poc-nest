@@ -13,6 +13,11 @@ export enum CertificationStatus {
     PASSED = "PASSED"
 }
 
+export enum UserStatus {
+    PENDING = "PENDING",
+    ACTIVE = "ACTIVE"
+}
+
 export class CreateCertificationInput {
     code: string;
     name: string;
@@ -31,6 +36,20 @@ export class UpdateCertificationInput {
     verificationUrl?: Nullable<string>;
 }
 
+export class CreateUserInput {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+}
+
+export class UpdateUserInput {
+    firstName?: Nullable<string>;
+    lastName?: Nullable<string>;
+    email?: Nullable<string>;
+    password?: Nullable<string>;
+}
+
 export class Certification {
     id: string;
     code: string;
@@ -45,6 +64,10 @@ export abstract class IQuery {
     abstract certifications(): Nullable<Certification>[] | Promise<Nullable<Certification>[]>;
 
     abstract certification(id: string): Nullable<Certification> | Promise<Nullable<Certification>>;
+
+    abstract users(): Nullable<User>[] | Promise<Nullable<User>[]>;
+
+    abstract user(id: string): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export abstract class IMutation {
@@ -53,6 +76,20 @@ export abstract class IMutation {
     abstract updateCertification(id: string, updateCertificationInput: UpdateCertificationInput): Certification | Promise<Certification>;
 
     abstract removeCertification(id: string): Nullable<Certification> | Promise<Nullable<Certification>>;
+
+    abstract createUser(createUserInput: CreateUserInput): User | Promise<User>;
+
+    abstract updateUser(id: string, updateUserInput: UpdateUserInput): User | Promise<User>;
+
+    abstract removeUser(id: string): User | Promise<User>;
+}
+
+export class User {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email?: Nullable<string>;
+    password?: Nullable<string>;
 }
 
 type Nullable<T> = T | null;
