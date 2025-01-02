@@ -91,7 +91,7 @@ export class UsersService {
     if (!isValidObjectId(id)) {
       throw new BadRequestException('ID must be a ObjectId!');
     }
-    if (updateUserInput.password.length > 0) {
+    if (updateUserInput.password && updateUserInput.password.length > 0) {
       updateUserInput.password = await this.hashPassword(
         updateUserInput.password,
       );
