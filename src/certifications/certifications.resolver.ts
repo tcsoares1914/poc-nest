@@ -14,7 +14,7 @@ export class CertificationsResolver {
    * Create a new certification.
    */
   @Mutation('createCertification')
-  create(
+  public create(
     @Args('createCertificationInput')
     createCertificationInput: CreateCertificationInput,
   ) {
@@ -25,7 +25,7 @@ export class CertificationsResolver {
    * Find all certifications.
    */
   @Query('certifications')
-  findAll() {
+  public findAll() {
     return this.certificationsService.findAll();
   }
 
@@ -33,7 +33,7 @@ export class CertificationsResolver {
    * Find a certification by ID.
    */
   @Query('certification')
-  findOne(@Args('id') id: string) {
+  public findOne(@Args('id') id: string) {
     return this.certificationsService.findOne(id);
   }
 
@@ -41,7 +41,7 @@ export class CertificationsResolver {
    * Update a certification by ID.
    */
   @Mutation('updateCertification')
-  update(
+  public update(
     @Args('id') id: string,
     @Args('updateCertificationInput')
     updateCertificationInput: UpdateCertificationInput,
@@ -53,7 +53,7 @@ export class CertificationsResolver {
    * Remove a certification by ID.
    */
   @Mutation('removeCertification')
-  remove(@Args('id') id: string) {
+  public remove(@Args('id') id: string) {
     return this.certificationsService.remove(id);
   }
 }
