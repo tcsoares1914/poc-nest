@@ -23,6 +23,7 @@ describe('HealthCheckService', () => {
       healthy: true,
       services: { api: true, database: true },
     };
+
     expect(service.check()).toBeDefined();
     expect(service.check()).resolves.toEqual(expected);
   });
