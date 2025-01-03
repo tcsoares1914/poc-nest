@@ -65,6 +65,8 @@ export abstract class IQuery {
 
     abstract certification(id: string): Nullable<Certification> | Promise<Nullable<Certification>>;
 
+    abstract healthCheck(): HealthCheck | Promise<HealthCheck>;
+
     abstract users(): Nullable<User>[] | Promise<Nullable<User>[]>;
 
     abstract user(id: string): Nullable<User> | Promise<Nullable<User>>;
@@ -82,6 +84,18 @@ export abstract class IMutation {
     abstract updateUser(id: string, updateUserInput: UpdateUserInput): User | Promise<User>;
 
     abstract removeUser(id: string): User | Promise<User>;
+}
+
+export class ServiceStatus {
+    api: boolean;
+    database: boolean;
+}
+
+export class HealthCheck {
+    name: string;
+    version: string;
+    healthy: boolean;
+    services: ServiceStatus;
 }
 
 export class User {
