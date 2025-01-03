@@ -43,6 +43,11 @@ describe('CertificationsService', () => {
     expect(service).toBeDefined();
   });
 
+  describe('When try to create a new certification.', () => {
+    it('should create a new certification.', async () => {});
+    it('should throw an InternalServerErrorException when create a new certification.', async () => {});
+  });
+
   describe('When try to list all certifications.', () => {
     it('should return a list all certifications.', async () => {
       const certifications = CertificationTestMocks.getCertifications();

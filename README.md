@@ -64,13 +64,36 @@ Check if API is healthy, make a GET request for /:
 GET: http://localhost:3000/
 ```
 
-If API is OK:
+Perform a query for check a status of API:
 
 ```bash
+query {
+	healthCheck {
+		name,
+		version,
+		healthy,
+		services {
+			api,
+			database,
+		}
+	}
+}
+```
+
+```bash
+# Response:
 {
-  "healthy" : true,
-  "name" : "API",
-  "version" : "0.0.1"
+	"data": {
+		"healthCheck": {
+			"name": "API",
+			"version": "0.0.1",
+			"healthy": true,
+			"services": {
+				"api": true,
+				"database": true
+			}
+		}
+	}
 }
 ```
 

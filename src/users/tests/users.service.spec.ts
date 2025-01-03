@@ -43,6 +43,11 @@ describe('UsersService', () => {
     expect(service).toBeDefined();
   });
 
+  describe('When try to create a new user.', () => {
+    it('should create a new user.', async () => {});
+    it('should throw an InternalServerErrorException when create a new user.', async () => {});
+  });
+
   describe('When try to list all users.', () => {
     it('should return a list all users.', async () => {
       const users = UserTestMocks.getUsers();

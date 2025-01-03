@@ -18,11 +18,13 @@ describe('HealthCheckService', () => {
 
   it('should be "API"', () => {
     const expected = {
-      healthy: true,
-      name: 'API',
+      name: process.env.npm_package_name,
       version: process.env.npm_package_version,
+      healthy: true,
+      services: { api: true, database: true },
     };
+
     expect(service.check()).toBeDefined();
-    expect(service.check()).toMatchObject(expected);
+    expect(service.check()).resolves.toEqual(expected);
   });
 });

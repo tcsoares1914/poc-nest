@@ -1,0 +1,22 @@
+type ServiceStatus {
+  # API status.
+  api: Boolean!
+  # Database status.
+  database: Boolean!
+}
+
+type HealthCheck {
+  # Application name.
+  name: String!
+  # Application Version.
+  version: String!
+  # Application healthy.
+  healthy: Boolean!
+  # Application status.
+  services: ServiceStatus!
+}
+
+type Query {
+  # Health Check status.
+  healthCheck: HealthCheck!
+}

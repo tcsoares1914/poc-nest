@@ -21,7 +21,5 @@ const importedModules = [HealthCheckModule, UsersModule, CertificationsModule];
     }),
     ...importedModules,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}
