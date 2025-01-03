@@ -1,18 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
+import { Resolver, Query } from '@nestjs/graphql';
 import { HealthCheckService } from '@src/health-check/health-check.service';
 
-@Controller()
-export class HealthCheckController {
+@Resolver('HealthCheck')
+export class HealthCheckResolver {
   /**
    * Inject repository dependency.
    */
   constructor(private readonly healthCheckService: HealthCheckService) {}
 
   /**
-   * Return API status.
+   * Get Health Check.
    */
-  @Get()
-  check() {
+  @Query('healthCheck')
+  public health() {
     return this.healthCheckService.check();
   }
 }
